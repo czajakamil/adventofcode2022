@@ -12,3 +12,7 @@ for line in lines:
         calories = 0
 
 print(max(elfs))
+
+elfs.sort(reverse=True)
+
+print(sum(elfs[:3]))
