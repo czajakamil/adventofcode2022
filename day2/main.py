@@ -1,4 +1,4 @@
-with open("day2\data.txt", "r") as i:
+with open("data.txt", "r") as i:
     lines = i.read().split("\n")
 
 
@@ -59,6 +59,7 @@ for line in lines:
     line = tuple(line.split(' '))
     game_points += round_score(line)
     
+<<<<<<< HEAD
 print(f"First game points {game_points}")
 
 # Reset game points
@@ -71,3 +72,8 @@ for line in lines:
 
 
 print(f"Second game points {game_points}")
+=======
+print(game_points)
+
+# Add 3rd element to line un 
+>>>>>>> b906e7c (test)
