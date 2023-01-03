@@ -1,4 +1,5 @@
 import re
+from copy import deepcopy
 
 def matrix_to_lists(matrix):
      # Transpose the matrix
@@ -13,16 +14,16 @@ def matrix_to_lists(matrix):
 
     return matrix
 
-def move_crates(procedure: str, stack_one: list) -> list:
+def move_crates(procedure: str, stack: list) -> list:
     # Convert procedure to a list of integers
     procedure = re.findall(r'\d+', procedure)
     procedure = [int(x) for x in procedure]
     # We must iterete over the second element of the procedures, which is the number of crates to move, and move them one by one, stacking them on top of each other
     for i in range(procedure[0]):
         # Move the last item from stack[procedure[1]] to stack[procedure[2]]
-        stack_one[procedure[2] - 1].append(stack_one[procedure[1]- 1].pop())
+        stack[procedure[2] - 1].append(stack[procedure[1]- 1].pop())
     
-    return stack_one
+    return stack
 
 def move_multiple_crates(procedure: str, stack: list) -> list:
     # Convert procedure to a list of integers
@@ -49,21 +50,18 @@ def main():
     procedures = procedures.split("\n")
 
     # Copy
-    stack_one = list(stack)
-    stack_two = stack.copy()
+    stack_one = deepcopy(stack)
+    stack_two = deepcopy(stack)
     for procedure in procedures:
         move_crates(procedure, stack_one)
+        move_multiple_crates(procedure, stack_two)
 
     # Print the result for part 1
     print("Part one:")
     for x in stack_one:
         print(x)
-
-
-    # Part 2
-    for procedure in procedures:
-        move_multiple_crates(procedure, stack_two)
     
+    # Print the result for part 2
     print("\nPart two:")
     for x in stack_two:
         print(x)
