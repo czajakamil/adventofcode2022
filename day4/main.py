@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Class for each elf, with start and end of area range
 class Elf:
     def __init__(self, line: tuple):
@@ -21,6 +22,8 @@ def overlap(elf1: range, elf2: range) -> bool:
         return False
 
 
+=======
+>>>>>>> 5964624 (nie pamietam juz co to bylo)
 def main():
     with open("day4/data.txt", "r") as i:
         lines = i.read().split("\n")
